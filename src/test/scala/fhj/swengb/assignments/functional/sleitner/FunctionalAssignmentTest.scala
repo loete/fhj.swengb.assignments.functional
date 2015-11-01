@@ -1,4 +1,4 @@
-package fhj.swengb.assignments.functional.rladstaetter
+package fhj.swengb.assignments.functional.sleitner
 
 import org.junit.Assert._
 import org.junit.{Ignore, Test}
@@ -14,38 +14,52 @@ class FunctionalAssignmentTest {
   val assignment0 = FunctionalAssignment(lowerBound, upperBound, factor)
 
   /**
-   * this test shows that your Assignment1 contains an attribute
-   * (either val, var or def) which returns a collection containing
-   * 100 elements.
-   */
+    * helper function to display the values xs,ys,zs,result
+    */
+  def display(assignment : FunctionalAssignment) : Unit = {
+    println(assignment.xs.mkString("[",",","]"))
+    println(assignment.ys.mkString("[",",","]"))
+    println(assignment.zs.mkString("[",",","]"))
+    println(assignment.result.mkString("[",",","]"))
+  }
+
+  @Test def showXs(): Unit = {
+    display(assignment0)
+  }
+
+  /**
+    * this test shows that your Assignment1 contains an attribute
+    * (either val, var or def) which returns a collection containing
+    * 100 elements.
+    */
   @Test def provideCollectionWith1000Elements(): Unit = {
     assertEquals(upperBound - lowerBound + 1, assignment0.xs.size)
   }
 
   /**
-   * Test shows that elements are smaller or equal than 1000
-   */
+    * Test shows that elements are smaller or equal than 1000
+    */
   @Test def smaller1000(): Unit = {
     assertTrue(assignment0.xs.forall(_ <= upperBound))
   }
 
   /**
-   * Test shows that all elements are greater than 0.
-   */
+    * Test shows that all elements are greater than 0.
+    */
   @Test def greaterEqual0(): Unit = {
     assertTrue(assignment0.xs.forall(_ >= lowerBound))
   }
 
   /**
-   * Test shows that ys is implemented correctly
-   */
+    * Test shows that ys is implemented correctly
+    */
   @Test def showCorrectMultiplication(): Unit = {
     assertEquals(0, (assignment0.xs zip assignment0.ys.reverse.map(_ / factor)) map { case (a, b) => a - b } sum)
   }
 
   /**
-   * Test shows that the sum of the given seq is correct
-   */
+    * Test shows that the sum of the given seq is correct
+    */
   @Test def showCorrectSumImplementation(): Unit = {
     assertEquals((lowerBound + upperBound) * upperBound / 2, assignment0.sumXs)
   }
@@ -58,5 +72,5 @@ class FunctionalAssignmentTest {
     assertTrue(assignment0.result.forall(_ == factor))
   }
 
-
 }
+
