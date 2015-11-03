@@ -45,7 +45,6 @@ case class FunctionalAssignment(lowerBound: Int = 1,
 
   val ys: Seq[Int] = createYs(xs,factor)
 
-
   /**
     * this sequence contains pairs of xs and ys. the ys should
     * be in reversed order.
